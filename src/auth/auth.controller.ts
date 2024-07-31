@@ -72,7 +72,7 @@ export class AuthController {
   async googleAtuh(@Req() _req) {}
 
   @Get('google/callback')
-  async googleAuthCallback(@Req() req: any, @Res() res: Response) {
+  async googleAuthCallback(@Req() req, @Res() res: Response) {
     const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req);
 
     this.authService.addRefreshTokenToResponse(res, refreshToken);

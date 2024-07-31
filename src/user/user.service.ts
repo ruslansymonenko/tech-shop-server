@@ -46,4 +46,25 @@ export class UserService {
       },
     });
   }
+
+  async toogleFavorites(productId: string, userId: string) {
+    const user = await this.getById(userId);
+
+    const isExist = user.favorites.some((product) => product.id === productId);
+
+    await this.prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        favorites: {
+          [isExist ? 'disconnect' : 'connect']: {
+            id: productId,
+          },
+        },
+      },
+    });
+
+    return true;
+  }
 }
