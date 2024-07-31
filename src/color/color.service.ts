@@ -1,7 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { CreateStoreDto } from '../store/dto/create-store.dto';
-import { UpdateStoreDto } from '../store/dto/update-store.dto';
 import { ColorDto } from './dto/color.dto';
 
 @Injectable()
@@ -38,12 +36,12 @@ export class ColorService {
     });
   }
 
-  async update(storeId: string, dto: ColorDto) {
-    await this.getById(storeId);
+  async update(colorId: string, dto: ColorDto) {
+    await this.getById(colorId);
 
     return this.prisma.color.update({
       where: {
-        id: storeId,
+        id: colorId,
       },
       data: dto,
     });

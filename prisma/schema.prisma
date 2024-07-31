@@ -21,7 +21,7 @@ model User {
   password String?
 
   name    String @default("User")
-  picture String @default("/uploads/no-user-image.img")
+  picture String @default("/uploads/no-user-image.png")
 
   stores    Store[]
   reviews   Review[]
